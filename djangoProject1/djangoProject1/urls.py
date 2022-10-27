@@ -23,4 +23,6 @@ urlpatterns = [
     #path('web/', views.web),
     path('ans/',views.ans),
     path('login/',views.login),
+    path('signin/',views.signin),
+    path('link/',views.link),
 ]

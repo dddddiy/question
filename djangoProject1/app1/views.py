@@ -21,7 +21,7 @@ def ans(request):#request封装请求数据
     #return redirect("https://www4.bing.com")
 def login(request):
     if request.method == "GET":
-        return render(request,"signin.html")
+        return render(request,"login.html")
     else:
         print(request.POST)
         user = request.POST.get("user")
@@ -30,4 +30,7 @@ def login(request):
             #return HttpResponse("welcome")
             return redirect("https://www4.bing.com")
         else:
-            return render(request, "signin.html", {"error":"错误"})
+            return render(request, "login.html", {"error":"错误"})
+def signin(request):
+    return HttpResponse("welcome")
+def link(request):
