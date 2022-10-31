@@ -31,6 +31,22 @@ def login(request):
             return redirect("https://www4.bing.com")
         else:
             return render(request, "login.html", {"error":"错误"})
+from app1 import models
 def signin(request):
-    return HttpResponse("welcome")
+    if request.method=="GET":
+        return render(request, "signin.html")
+    else:
+        user=request.POST.get("name")
+        pwd=request.POST.get("pwd")
+        p=models.user.objects.filter(name=user)
+        if any(p):
+            return  HttpResponse("用户名已存在")
+        else:
+            models.user.objects.create(name=user,pwd=pwd)
+            return HttpResponse("successful")
+
+
 def link(request):
+    models.user.objects.create(name="test",pwd="123")
+    return HttpResponse("welcome")
+
