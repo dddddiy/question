@@ -38,9 +38,12 @@ def signin(request):
     else:
         user=request.POST.get("name")
         pwd=request.POST.get("pwd")
+        sure=request.POST.get("pwd2")
         p=models.user.objects.filter(name=user)
         if any(p):
             return  HttpResponse("用户名已存在")
+        elif sure !=pwd:
+            return HttpResponse("两次密码不同")
         else:
             models.user.objects.create(name=user,pwd=pwd)
             return HttpResponse("successful")
