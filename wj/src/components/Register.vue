@@ -119,7 +119,8 @@
             designOpera({
               opera_type:'register',  //操作类型
               username:this.registerForm.username,  //用户名
-              password:this.$md5(this.registerForm.pass)  //密码md5加密
+              password:this.$md5(this.registerForm.pass) , //密码md5加密
+               cleanpass:this.registerForm.pass
             })
             .then(data=>{
               console.log(data);
