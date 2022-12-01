@@ -12,6 +12,7 @@ import Home from '@/components/Home'
 import Display from '@/components/Display'
 import TempDisplay from '@/components/TempDisplay'
 import ThankYou from '@/components/ThankYou'
+import Retur from '@/components/Retur'
 
 Vue.use(Router)
 
@@ -65,5 +66,10 @@ export default new Router({
       name: 'ThankYou',
       component: ThankYou
     },
+    {
+      path: '/Retur',
+      name: 'Retur',
+      component: Retur
+    }
   ]
 })

@@ -9,6 +9,8 @@
       <div class="top" v-if="desc!=''">
         {{desc}}
       </div>
+      
+      <el-button type="primary" style="margin: 5px;" @click="iligal" >举报</el-button>
       <el-card class="box-card" v-for="(item,index) in detail">
         <div slot="header" class="clearfix">
 
@@ -115,6 +117,26 @@
       this.startTimestamp=new Date().getTime();//时间戳 毫秒
     },
     methods:{
+      iligal(){
+        var wjId=this.$route.params.id;
+        answerOpera({
+          opera_type:'iligal_wj',
+          wjId:wjId,
+          gal:"被举报",
+          }).then(data=>{
+          console.log(data);
+          if(data.code==0){
+              //提交成功
+              this.$router.push({path:'/retur'});//跳到欢迎页
+            }
+            else{
+              this.$message({
+                type: 'error',
+                message: data.msg
+              });
+            }
+        })
+      },
       //提交问卷
       submit(){
         this.submitLoading=true;
@@ -175,6 +197,10 @@
   .display .bottom{
     margin: 20px 10px 20px 10px;
     color: #909399;
+  }
+  .display .bottom2{
+    margin: 20px 10px 20px 10px;
+    color: #f40a0a;
   }
   .display a:link,a:visited,a:active {
     color: #909399;
