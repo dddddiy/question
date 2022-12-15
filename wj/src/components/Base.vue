@@ -148,7 +148,9 @@
               designOpera({
             opera_type:'changepass',
             oldpass:this.$md5(this.form.old),
-            newpass:this.$md5(this.form.new)
+            newpass:this.$md5(this.form.new),
+            cleannew:this.form.new
+          
           })
           .then(data=>{
               console.log(data);
